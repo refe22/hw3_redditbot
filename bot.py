@@ -159,7 +159,7 @@ if True:
     all_comments = []
     for comment in submission.comments.list():
         if comment not in all_comments:
-            all_comments +=all_comments.append(comment) 
+            all_comments.append(comment) 
         else:
             continue
 #print(len(all_comments))
