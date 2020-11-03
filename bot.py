@@ -120,7 +120,7 @@ def generate_comment():
     if choice == 4:
         return generate_comment_4()
     if choice == 5:
-        return generate_comment_4()
+        return generate_comment_5()
 
 # connect to reddit 
 reddit = praw.Reddit('lbot')
@@ -198,7 +198,7 @@ while True:
     # your bot will behave differently depending on whether it's posted a comment or not
     has_not_commented = len(not_my_comments) == len(all_comments)
     comments_without_replies = []
-    if has_not_commented == False:
+    if has_not_commented == True:
         text = generate_comment()
         submission.reply(text)
 
@@ -217,7 +217,7 @@ while True:
         # the outer for loop loops over not_my_comments,
         # and the inner for loop loops over all the replies of the current comment from the outer loop,
         # and then an if statement checks whether the comment is authored by you or not
-        comments_without_replies = []
+        #comments_without_replies = []
         # HINT:
         # this is the most difficult of the tasks,
         # and so you will have to be careful to check that this code is in fact working correctly
@@ -234,7 +234,7 @@ while True:
 
             if has_replied == False: 
                 comments_without_replies.append(comment)
-        #print('len(comments_without_replies)=',len(comments_without_replies))
+        print('len(comments_without_replies)=',len(comments_without_replies))
 
         # FIXME (task 4): randomly select a comment from the comments_without_replies list,
         # and reply to that comment
@@ -243,17 +243,19 @@ while True:
         # use the generate_comment() function to create the text,
         # and the .reply() function to post it to reddit
 
-        #orginal: 
-        #select_comment = random.choice(comments_without_replies)
-        #comment = generate_comment()
-
+        #orginal:
+        """
+        select_comment = random.choice(comments_without_replies)
+        comment = generate_comment()
+        submission.reply(comment)
+        """
         #Extra credit: 
         sorted_comments_without_replies = sorted(comments_without_replies, key=lambda comment:comment.score, reverse =True)  
         select_comment = random.choice(sorted_comments_without_replies)
         comment = generate_comment()
         submission.reply(comment)
         #print('len(sorted_comments_without_replies)=', sorted_comments_without_replies)
-          
+         
 
     # FIXME (task 5): select a new submission for the next iteration;
     # your newly selected submission should have a 50% chance of being the original submission
@@ -271,12 +273,12 @@ while True:
     if random.random() >= 0.5:
         for thread in reddit.subreddit('csci040temp').top(time_filter='all'):
             reddit_threads.append(thread)
-            thread_new = random.choice(reddit_threads)
-            submission = reddit.submission(id=thread_new)
+        thread_new = random.choice(reddit_threads)
+        submission = reddit.submission(id=thread_new)
             #print('number of threads=', reddit_threads)
         try:
             submission.reply(generate_comment())
-            print('working test:', 'hello')
+            print('working test:', 'commented1')
 
         except praw.exceptions.RedditAPIException:
             reddit_threads.remove(thread_new)
@@ -289,5 +291,5 @@ while True:
     else:
         submission = reddit.submission(url=reddit_debate_url)
         submission.reply(generate_comment())
-        print('working test:', 'hi')
+        print('working test:', 'commented2')
 
