@@ -16,4 +16,4 @@
 (copy and past the output of the cammnd from bot_counter.py in here)
 ```
 
-<addr> Since I completed tasks 0 - 5 and did two extra credit tasks worth 1 point (sorted comments_without_replies and upvoting comments that mention one of the candidates), and one extra credit task worth 2 points (using polarity to determine if the bot will up vote or down vote a comment), my score should be 20/20 
+<addr> Since I completed tasks 0 - 5 and did two extra credit tasks worth 1 point (sorted comments_without_replies and upvoting comments that mention one of the candidates), and one extra credit task worth 2 points (using polarity to determine if the bot will up vote or down vote a comment), my score should be 20/20. 
