@@ -127,7 +127,7 @@ reddit = praw.Reddit('lbot')
 
 # connect to the debate thread
 #reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jhb20w/2020_debate_thread/'
-reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jmbzdf/trump_claims_at_debate_that_china_is_paying_for/'
+reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jnezrs/massachusetts_republican_governor_cannot_support/'
 
 submission = reddit.submission(url=reddit_debate_url)
 
@@ -247,13 +247,13 @@ while True:
         """
         select_comment = random.choice(comments_without_replies)
         comment = generate_comment()
-        submission.reply(comment)
+        comment.reply(comment)
         """
         #Extra credit: 
         sorted_comments_without_replies = sorted(comments_without_replies, key=lambda comment:comment.score, reverse =True)  
         select_comment = random.choice(sorted_comments_without_replies)
-        comment = generate_comment()
-        submission.reply(comment)
+        new_comment = generate_comment()
+        comment.reply(new_comment)
         #print('len(sorted_comments_without_replies)=', sorted_comments_without_replies)
          
 
@@ -277,7 +277,7 @@ while True:
         submission = reddit.submission(id=thread_new)
             #print('number of threads=', reddit_threads)
         try:
-            submission.reply(generate_comment())
+            comment.reply(generate_comment())
             print('working test:', 'commented1')
 
         except praw.exceptions.RedditAPIException:
@@ -287,9 +287,9 @@ while True:
             thread_new = random.choice(reddit_threads)
             submission = reddit.submission(id=thread_new)
             print('New thread:', thread_new)
-            submission.reply(generate_comment())
+            comment.reply(generate_comment())
     else:
         submission = reddit.submission(url=reddit_debate_url)
-        submission.reply(generate_comment())
+        comment.reply(generate_comment())
         print('working test:', 'commented2')
 
