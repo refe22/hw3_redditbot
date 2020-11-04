@@ -7,7 +7,7 @@ reddit_threads = []
 reddit = praw.Reddit('lbot')
 
 
-reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jn3fjq/mitch_mcconnell_just_adjourned_the_senate_until/'
+reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jnezrs/massachusetts_republican_governor_cannot_support/'
 submission = reddit.submission(url=reddit_debate_url)
 submission.comments.replace_more(limit=None)
 """
